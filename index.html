@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mein Sparplaner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <h1>💰 Mein Sparplaner</h1>
+    <p>Setze dir Sparziele und trage ein, wie viel du schon gespart hast.</p>
+  </header>
+
+  <main class="container">
+
+    <!-- Gesamtübersicht -->
+    <section class="summary" aria-label="Gesamtübersicht">
+      <div class="card stat">
+        <span class="stat-label">Gespart insgesamt</span>
+        <strong class="stat-value" id="sum-saved">0,00 €</strong>
+      </div>
+      <div class="card stat">
+        <span class="stat-label">Summe aller Ziele</span>
+        <strong class="stat-value" id="sum-target">0,00 €</strong>
+      </div>
+      <div class="card stat">
+        <span class="stat-label">Gesamtfortschritt</span>
+        <strong class="stat-value" id="sum-percent">0 %</strong>
+        <div class="progress"><div class="progress-bar" id="sum-bar"></div></div>
+      </div>
+    </section>
+
+    <!-- Neues Ziel -->
+    <form id="goal-form" class="card form-card" autocomplete="off">
+      <h2>Neues Sparziel</h2>
+      <div class="form-grid">
+        <label>Name des Ziels
+          <input id="goal-name" type="text" maxlength="60" placeholder="z. B. Urlaub in Italien" required>
+        </label>
+        <label>Symbol
+          <select id="goal-emoji">
+            <option value="🏖️">🏖️ Urlaub</option>
+            <option value="🚗">🚗 Auto</option>
+            <option value="🏠">🏠 Wohnung / Haus</option>
+            <option value="💻">💻 Technik</option>
+            <option value="🎁">🎁 Geschenk</option>
+            <option value="🛟">🛟 Notgroschen</option>
+            <option value="🎓">🎓 Ausbildung</option>
+            <option value="🎯" selected>🎯 Sonstiges</option>
+          </select>
+        </label>
+        <label>Zielbetrag (€)
+          <input id="goal-target" type="text" inputmode="decimal" placeholder="z. B. 1500" required>
+        </label>
+        <label>Schon gespart (€, optional)
+          <input id="goal-start" type="text" inputmode="decimal" placeholder="0">
+        </label>
+        <label>Bis wann? (optional)
+          <input id="goal-deadline" type="date">
+        </label>
+      </div>
+      <button type="submit" class="btn primary">Ziel anlegen</button>
+    </form>
+
+    <!-- Liste der Ziele -->
+    <section id="goals" class="goals" aria-label="Deine Sparziele"></section>
+
+  </main>
+
+  <footer class="footer">
+    Deine Daten werden nur in deinem Browser gespeichert (localStorage) und nirgendwohin gesendet.
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
